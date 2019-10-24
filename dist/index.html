@@ -11,18 +11,21 @@
         <div id="todo-tab"><span id="todo-tab-text">Todo List</span></div>
         <div id="project-tab"><span id="project-tab-text">Projects</span> </div>
         <div id="todo-view">
-          <div class="todo-item">
+          <form class="todo-item" action="index.html" method="post">
+              <div class="check-mark-container"></div>
+              <input class="todo-content" type="text" name="todo-description" placeholder="Type in description">
+              <input type="date" name="due-date" value="">
+          </form>
+          <!-- <div class="todo-item">
             <div class="check-mark-container"></div>
             <div class="todo-content">
               <span>Todo testing content block for stuff</span>
             </div>
-          </div>
-
-
+          </div> -->
 
           <div class="add-todo">
             <div class="add-button">
-              
+              <span class="plus-sign">+</span>
             </div>
           </div>
       </div>

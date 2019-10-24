@@ -59,17 +59,17 @@ time, mark, audio, video {
    grid-column-end: 3;
    display: grid;
    grid-auto-rows: 8vh;
-   /* grid-template-rows: 9vh; */
+
 }
 .todo-item {
-    margin-left: auto;
+    margin: auto;
     width: 85vw;
+    height: 6vh;
     background-color: #e4fded;
     margin-right: auto;
     border-radius: 10px;
-    margin-top: 2vh;
     display: grid;
-    grid-template-columns: 1fr 6fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 6fr 3fr 1fr 1fr;
 }
 .check-mark-container {
     position: relative;
@@ -81,7 +81,8 @@ time, mark, audio, video {
     border-radius: 26px;
 }
 .todo-content{
-    margin: 6px;
+    margin-top:auto;
+    margin-bottom:auto;
     height: 4vh;
     width: 98%;
     background-color: white;
@@ -95,7 +96,7 @@ time, mark, audio, video {
 .add-todo {
     width: 100%;
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 2;
 }
 
 .add-button{
@@ -107,6 +108,15 @@ time, mark, audio, video {
     margin-left: auto;
     margin-right: auto;
     margin-top: 2vw;
+    position: relative;
+}
+
+.plus-sign {
+    display: block;
+    font-size: 2em;
+    position: absolute;
+    left: 7px;
+    bottom: 0px;
 }
 /* - - - - - - - - - - - - - - - - - -  */
 
