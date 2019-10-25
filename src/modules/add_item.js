@@ -18,7 +18,8 @@ const createItemForm =(()=>{
   itemContainer.appendChild(checkMarkContainer);
 
   //check mark Button
-  let checkMarkButton = document.createElement("button");
+  let checkMarkButton = document.createElement("input");
+  checkMarkButton.setAttribute("type","Button");
   checkMarkButton.className = "completed";
   checkMarkContainer.appendChild(checkMarkButton);
 
@@ -39,11 +40,12 @@ const createItemForm =(()=>{
   priority.className = "todo-priority";
   itemContainer.appendChild(priority);
 
-  let priorityToggle = document.createElement("button");
+  let priorityToggle = document.createElement("input");
+  priorityToggle.setAttribute("type","button")
   priorityToggle.className = "todo-priority-set";
   priority.appendChild(priorityToggle);
 
-  // delete item Button 
+  // delete item Button
   let deleteItem = document.createElement("div");
   deleteItem.className = "todo-delete";
   itemContainer.appendChild(deleteItem);
@@ -58,6 +60,18 @@ const createItemForm =(()=>{
   deleteButton.setAttribute("value","+");
   deleteDiv.appendChild(deleteButton);
 
+  //notes text field
+  let notes = document.createElement("input");
+  notes.className = "todo-notes";
+  notes.setAttribute("type","button");
+  notes.setAttribute("value","Add Notes");
+  itemContainer.appendChild(notes);
+
+  let saveItem = document.createElement("input");
+  saveItem.className = "todo-save";
+  saveItem.setAttribute("type","button");
+  saveItem.setAttribute("value","Save");
+  itemContainer.appendChild(saveItem);
 
   console.log(listView)
 })
