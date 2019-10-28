@@ -1,7 +1,17 @@
 const test = (() => {
    let add_button = document.getElementsByClassName('add-button')[0];
    add_button.onclick = createItemForm
-   console.log(add_button)
+   console.log("add_button created")
+})
+// Saving building Item ?
+const testSaving = ((event) => {
+   event.preventDefault();
+   // console.log(event);
+   console.log("inside Test Saving ")
+   let descriptionValue = document.querySelector('[name=description-x]').value;
+   let dateValue = document.querySelector('[name=date-x]').value;
+   console.log(descriptionValue);
+   console.log(dateValue);
 })
 
 const createItemForm =(()=>{
@@ -10,6 +20,7 @@ const createItemForm =(()=>{
   let addButton = document.getElementById("add-todo");
   let itemContainer = document.createElement("form");
   itemContainer.className ="todo-item";
+  itemContainer.addEventListener("submit",testSaving);
   listView.appendChild(itemContainer);
 
   //check mark structure
@@ -20,12 +31,14 @@ const createItemForm =(()=>{
   //check mark Button
   let checkMarkButton = document.createElement("input");
   checkMarkButton.setAttribute("type","Button");
+  checkMarkButton.setAttribute("name","completed-x")
   checkMarkButton.className = "completed";
   checkMarkContainer.appendChild(checkMarkButton);
 
   //todo text description
   let todoDescription = document.createElement("input");
   todoDescription.className = "todo-content";
+  todoDescription.setAttribute("name","description-x");
   todoDescription.setAttribute("placeholder","Type in description")
   itemContainer.appendChild(todoDescription);
 
@@ -33,6 +46,7 @@ const createItemForm =(()=>{
   let date =document.createElement("input");
   date.className = "todo-date";
   date.setAttribute("type","date");
+  date.setAttribute("name","date-x");
   itemContainer.appendChild(date);
 
   //todo priority level(red, orange, yellow);
@@ -42,7 +56,10 @@ const createItemForm =(()=>{
 
   let priorityToggle = document.createElement("input");
   priorityToggle.setAttribute("type","button")
+  priorityToggle.setAttribute("name","priority-x");
+  priorityToggle.setAttribute("data-priority","normal")
   priorityToggle.className = "todo-priority-set";
+  priorityToggle.onclick = changePriority;
   priority.appendChild(priorityToggle);
 
   // delete item Button
@@ -60,19 +77,52 @@ const createItemForm =(()=>{
   deleteButton.setAttribute("value","+");
   deleteDiv.appendChild(deleteButton);
 
-  //notes text field
+  //NOTES text field toggle button
   let notes = document.createElement("input");
   notes.className = "todo-notes";
   notes.setAttribute("type","button");
   notes.setAttribute("value","Add Notes");
   itemContainer.appendChild(notes);
 
+  //SAVE button
   let saveItem = document.createElement("input");
   saveItem.className = "todo-save";
-  saveItem.setAttribute("type","button");
+  saveItem.setAttribute("type","submit");
   saveItem.setAttribute("value","Save");
   itemContainer.appendChild(saveItem);
 
-  console.log(listView)
+  console.log("listView has run")
 })
+
+const changePriority = (() => {
+  let priorityButton = document.querySelector('[name=priority-x]');
+  let priorityState  = priorityButton.dataset.priority
+  console.log(priorityButton);
+  console.log(priorityState);
+
+  if(priorityState ==="normal"){
+    priorityButton.setAttribute("data-priority","important")
+    priorityButton.style.background ="yellow"
+} else if (priorityState ==="important"){
+    priorityButton.setAttribute("data-priority","urgent")
+    priorityButton.style.background ="red"
+} else if (priorityState === "urgent") {
+    priorityButton.setAttribute("data-priority","normal")
+    priorityButton.style.background ="green"
+}
+  console.log(priorityState);
+})
+
+// ToDo item Constructor
+function TodoItem(isFinished, description, priority, date, notes) {
+    this.isFinished = false
+    this.description = description
+    this.date = date
+    this.priority = priority
+    this.notes = notes
+};
+
+
+
+
 export { test };
