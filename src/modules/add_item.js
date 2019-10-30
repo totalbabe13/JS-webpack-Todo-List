@@ -1,26 +1,35 @@
-const test = (() => {
+
+
+const showFormforTodo = (() => {
    let add_button = document.getElementsByClassName('add-button')[0];
    add_button.onclick = createItemForm
-   console.log("add_button created")
 })
-// Saving building Item ?
-const testSaving = ((event) => {
+// Saving building Item
+const getUserInput = ((event) => {
    event.preventDefault();
-   // console.log(event);
    console.log("inside Test Saving ")
+   //CREATE object
    let descriptionValue = document.querySelector('[name=description-x]').value;
-   let dateValue = document.querySelector('[name=date-x]').value;
-   console.log(descriptionValue);
-   console.log(dateValue);
+   let dateValue  = document.querySelector('[name=date-x]').value;
+   let priorityValue = document.querySelector('[name=priority-x]').dataset.priority;
+   let notesValue = document.querySelector('[name=notes-x]').value;
+   let userTodoItem = new TodoItem(descriptionValue, dateValue, priorityValue, notesValue)
+   //Remove Form
+   document.getElementById("todo-view").removeChild(document.getElementById("todo-item"));
+   console.log(userTodoItem);
+   return userTodoItem;
+   //xlist.push(userTodoItem);
 })
-
 const createItemForm =(()=>{
+  let itemFormpPresent = document.getElementById("todo-item");
+  if (itemFormpPresent === null){
   // list item container
   let listView = document.getElementById("todo-view");
   let addButton = document.getElementById("add-todo");
   let itemContainer = document.createElement("form");
-  itemContainer.className ="todo-item";
-  itemContainer.addEventListener("submit",testSaving);
+  // itemContainer.className ="todo-item";
+  itemContainer.id ="todo-item";
+  itemContainer.addEventListener("submit",getUserInput);
   listView.appendChild(itemContainer);
 
   //check mark structure
@@ -40,6 +49,7 @@ const createItemForm =(()=>{
   todoDescription.className = "todo-content";
   todoDescription.setAttribute("name","description-x");
   todoDescription.setAttribute("placeholder","Type in description")
+  todoDescription.setAttribute("required","")
   itemContainer.appendChild(todoDescription);
 
   //todo date set
@@ -47,6 +57,7 @@ const createItemForm =(()=>{
   date.className = "todo-date";
   date.setAttribute("type","date");
   date.setAttribute("name","date-x");
+  date.setAttribute("required","")
   itemContainer.appendChild(date);
 
   //todo priority level(red, orange, yellow);
@@ -80,8 +91,10 @@ const createItemForm =(()=>{
   //NOTES text field toggle button
   let notes = document.createElement("input");
   notes.className = "todo-notes";
-  notes.setAttribute("type","button");
-  notes.setAttribute("value","Add Notes");
+  notes.setAttribute("type","text");
+  notes.setAttribute('name', "notes-x");
+  notes.setAttribute("placeholder","Add Notes here :)");
+  // notes.onclick = addNotes;
   itemContainer.appendChild(notes);
 
   //SAVE button
@@ -91,30 +104,27 @@ const createItemForm =(()=>{
   saveItem.setAttribute("value","Save");
   itemContainer.appendChild(saveItem);
 
-  console.log("listView has run")
-})
+  console.log("createItemForm has run")
+} else {alert("!!");}
 
+})
 const changePriority = (() => {
   let priorityButton = document.querySelector('[name=priority-x]');
   let priorityState  = priorityButton.dataset.priority
-  console.log(priorityButton);
-  console.log(priorityState);
 
   if(priorityState ==="normal"){
     priorityButton.setAttribute("data-priority","important")
     priorityButton.style.background ="yellow"
-} else if (priorityState ==="important"){
+ } else if (priorityState ==="important"){
     priorityButton.setAttribute("data-priority","urgent")
     priorityButton.style.background ="red"
-} else if (priorityState === "urgent") {
+ } else if (priorityState === "urgent") {
     priorityButton.setAttribute("data-priority","normal")
     priorityButton.style.background ="green"
-}
-  console.log(priorityState);
+ }
 })
-
-// ToDo item Constructor
-function TodoItem(isFinished, description, priority, date, notes) {
+// ToDo item Object Constructor
+function TodoItem(description, date, priority, notes) {
     this.isFinished = false
     this.description = description
     this.date = date
@@ -123,6 +133,4 @@ function TodoItem(isFinished, description, priority, date, notes) {
 };
 
 
-
-
-export { test };
+export { showFormforTodo};

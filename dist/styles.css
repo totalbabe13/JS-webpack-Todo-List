@@ -65,7 +65,7 @@ time, mark, audio, video {
    /* grid-auto-rows: 8vh; */
 
 }
-.todo-item {
+#todo-item {
     margin: auto;
     width: 85vw;
     height: 12vh;

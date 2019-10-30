@@ -1,2 +1,4 @@
-import { test } from './modules/add_item.js';
-test();
+let todoList = []
+
+import { showFormforTodo, saveItemToList } from './modules/add_item.js';
+showFormforTodo();
