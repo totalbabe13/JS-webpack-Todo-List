@@ -21,6 +21,7 @@ const getUserInput = ((event) => {
 
 })
 
+//DOM functions
 const createItemForm = (()=>{
   let itemFormpPresent = document.getElementById("todo-item");
   //ONLY opens one Form at a time
@@ -120,7 +121,9 @@ const formatSavedItem = ((userTodoItem) => {
   checkMarkContainer.className ="check-mark-container";
   newContainer.appendChild(checkMarkContainer);
   let checkMarkButton = document.createElement("button");
+  checkMarkButton.setAttribute("data-complete","false");
   checkMarkButton.className = "completed";
+  checkMarkButton.onclick = strikeThroughText;
   checkMarkContainer.appendChild(checkMarkButton);
 
   let todoDescription = document.createElement("p");
@@ -164,8 +167,28 @@ const formatSavedItem = ((userTodoItem) => {
   // let saveButton = document.getElementsByClassName("todo-save")[0];
   // console.log(saveButton)
 })
+
+
 const cancelForm = (()=> {
   document.getElementById("todo-view").removeChild(document.getElementById("todo-item"));
+})
+const strikeThroughText = (() => {
+  let completeButton = event.srcElement;
+  let completeSate = completeButton.dataset.complete
+  let buttonDiv = completeButton.parentNode;
+  let itemText = buttonDiv.nextSibling
+
+  if(completeSate === "false"){
+    itemText.style.textDecoration = "line-through";
+    completeButton.dataset.complete = "true";
+    console.log(completeButton.dataset.complete);
+  } else if(completeSate === "true"){
+    itemText.style.textDecoration = "underline";
+    completeButton.dataset.complete = "false";
+    console.log('test');
+  }
+  // itemText.style.textDecoration = "line-through";
+   // buttonDiv.nextSibling.setAttribute("text-decoration","line-through");
 })
 const changePriority = (() => {
   let priorityButton = document.querySelector('[name=priority-x]');
