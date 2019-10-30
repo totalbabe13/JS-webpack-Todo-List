@@ -18,7 +18,6 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-
 /* LAYOUT CONTAINER */
 #layout {
     height: 92vh;
@@ -28,7 +27,6 @@ time, mark, audio, video {
     grid-template-columns: 1fr 1fr;
 }
  /* - - - - - - - - - - - - - - - - - -  */
-
  /* TABS and TAB TEXT  */
 #todo-tab {
     border-top-left-radius: 25px;
@@ -53,7 +51,6 @@ time, mark, audio, video {
    color: white;
 }
 /* - - - - - - - - - - - - - - - - - -  */
-
 /* ToDo VIEW and ITEMS */
 #todo-view {
    background-color: #7bf4a3;
@@ -63,9 +60,23 @@ time, mark, audio, video {
    grid-auto-rows: 12vh;
    grid-row-gap: 12px;
    /* grid-auto-rows: 8vh; */
-
 }
 #todo-item {
+    margin: auto;
+    width: 85vw;
+    height: 12vh;
+    background-color: #e4fded;
+    margin-right: auto;
+		border: 2px solid #7cd8f7;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 6fr 3fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 4px;
+    justify-items:center;
+}
+.todo-item {
+	  border: 2px solid;
     margin: auto;
     width: 85vw;
     height: 12vh;
@@ -136,9 +147,7 @@ time, mark, audio, video {
     background-color: white;
     border: 1px solid chartreuse;
     border-radius: 26px;
-
 }
-
 .delete-icon{
    margin-left: 2px;
    margin-top: -7px;
@@ -164,14 +173,12 @@ time, mark, audio, video {
     border-radius: 15px;
 }
 /* - - - - - - - - - - - - - - - - - -  */
-
 /* Add Todo button and container  */
 .add-todo {
     width: 100%;
     grid-column-start: 1;
     grid-column-end: 2;
 }
-
 .add-button{
    height: 2em;
     width: 2em;
@@ -183,7 +190,6 @@ time, mark, audio, video {
     margin-top: 2vw;
     position: relative;
 }
-
 .plus-sign {
     display: block;
     font-size: 2em;
@@ -192,7 +198,20 @@ time, mark, audio, video {
     bottom: 0px;
 }
 /* - - - - - - - - - - - - - - - - - -  */
-
+/*SAVED items */
+.todo-content-saved{
+	  margin-top: 15px;
+}
+.todo-date-saved{
+	  margin-top: 15px;
+}
+.todo-notes-saved{
+	  font-size: small;
+    width: 95%;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+/* - - - - - - - - - - - - - - - - - -  */
 #project-view {
   background-color: #3bbd43;
   grid-column-start: 1;
