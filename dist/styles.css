@@ -171,7 +171,7 @@ time, mark, audio, video {
     grid-column-end: 2;
 }
 .add-button{
-   height: 2em;
+    height: 2em;
     width: 2em;
     background-color: white;
     border: 6px solid #87df00;
@@ -223,5 +223,25 @@ time, mark, audio, video {
   background-color: #3bbd43;
   grid-column-start: 1;
   grid-column-end: 3;
-  display: initial;
+  display: none;
+	grid-auto-rows: 12vh;
+	grid-row-gap: 12px;
 }
+
+#add-project{
+
+}
+
+#project-container {
+    margin: auto;
+    width: 85vw;
+    height: 12vh;
+    background-color: #a4baf1;
+    margin-right: auto;
+		border: 2px solid #7cd8f7;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 6fr 3fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 6px;
+    justify-items:center;
