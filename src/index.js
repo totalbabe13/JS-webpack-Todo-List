@@ -1,4 +1,6 @@
 let todoList = []
 
-import { showFormforTodo, saveItemToList } from './modules/add_item.js';
+import { showFormforTodo } from './modules/add_item.js';
+import { addToggles } from './modules/layout.js';
 showFormforTodo();
+addToggles();

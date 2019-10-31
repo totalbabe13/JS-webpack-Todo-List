@@ -2,9 +2,9 @@
 
 const showFormforTodo = (() => {
    let add_button = document.getElementsByClassName('add-button')[0];
-   add_button.onclick = createItemForm
+   add_button.onclick = createItemForm;
 })
-// Saving building Item
+// Saving/building Item
 const getUserInput = ((event) => {
    event.preventDefault();
    console.log("inside Test Saving ")
@@ -20,8 +20,7 @@ const getUserInput = ((event) => {
    return userTodoItem;
 
 })
-
-//DOM functions
+//DOM construction
 const createItemForm = (()=>{
   let itemFormpPresent = document.getElementById("todo-item");
   //ONLY opens one Form at a time
@@ -154,7 +153,7 @@ const formatSavedItem = ((userTodoItem) => {
   deleteItem.appendChild(deleteDiv);
   let deleteButton = document.createElement("input");
   deleteButton.className = "todo-remove";
-  deleteButton.onclick = cancelForm;
+  deleteButton.onclick = removeItem;
   deleteButton.setAttribute("type","button");
   deleteButton.setAttribute("value","+");
   deleteDiv.appendChild(deleteButton);
@@ -167,8 +166,13 @@ const formatSavedItem = ((userTodoItem) => {
   // let saveButton = document.getElementsByClassName("todo-save")[0];
   // console.log(saveButton)
 })
-
-
+//item manipulation/editing
+const removeItem = (() => {
+  let removeButton = event.srcElement;
+  let wholeItem = removeButton.parentNode.parentNode.parentNode
+  let viewer = wholeItem.parentNode
+  viewer.removeChild(wholeItem);
+})
 const cancelForm = (()=> {
   document.getElementById("todo-view").removeChild(document.getElementById("todo-item"));
 })
@@ -177,18 +181,13 @@ const strikeThroughText = (() => {
   let completeSate = completeButton.dataset.complete
   let buttonDiv = completeButton.parentNode;
   let itemText = buttonDiv.nextSibling
-
   if(completeSate === "false"){
     itemText.style.textDecoration = "line-through";
     completeButton.dataset.complete = "true";
-    console.log(completeButton.dataset.complete);
   } else if(completeSate === "true"){
     itemText.style.textDecoration = "underline";
     completeButton.dataset.complete = "false";
-    console.log('test');
   }
-  // itemText.style.textDecoration = "line-through";
-   // buttonDiv.nextSibling.setAttribute("text-decoration","line-through");
 })
 const changePriority = (() => {
   let priorityButton = document.querySelector('[name=priority-x]');
@@ -214,5 +213,4 @@ function TodoItem(description, date, priority, notes) {
     this.notes = notes
 };
 
-
-export { showFormforTodo};
+export { showFormforTodo };
