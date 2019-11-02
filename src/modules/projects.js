@@ -16,13 +16,13 @@ const createProjectForm = (() => {
     let addButton = document.getElementById("add-project");
     let projectContainer = document.createElement("form");
     projectContainer.id ="project-container";
-    // projectContainer.addEventListener("submit",getUserInput);
+    projectContainer.addEventListener("submit",getProjectInput);
     projectView.appendChild(projectContainer);
 
     //project text description
     let projectDescription = document.createElement("input");
     projectDescription.className = "project-content";
-    projectDescription.setAttribute("name","description-x");
+    projectDescription.setAttribute("name","project-title-x");
     projectDescription.setAttribute("placeholder","Type in Project Title...")
     projectDescription.setAttribute("required","")
     projectContainer.appendChild(projectDescription);
@@ -45,7 +45,7 @@ const createProjectForm = (() => {
     projectContainer.appendChild(addDetailField);
 
     let addProjectDetail = document.createElement("div")
-    addProjectDetail.className = "add-project-detail";
+    addProjectDetail.id = "add-project-detail";
     let addDetail = document.createElement('p');
     addDetail.onclick = createNewDetailField;
     addDetail.className = "add-detail";
@@ -65,7 +65,27 @@ const createProjectForm = (() => {
 })
 
 function createNewDetailField(){
-  console.log("inside createNewDetailField");
+  let projectContainer = document.getElementById("project-container");
+  let addButtonContainer = document.getElementById("add-project-detail");
+  let addDetailField = document.createElement("input");
+  addDetailField.setAttribute("placeholder","Type in Project detail...")
+  addDetailField.setAttribute("name","project-details-x");
+  addDetailField.className = "project-detail-div";
+  console.log(addButtonContainer);
+  projectContainer.insertBefore(addDetailField,addButtonContainer);
+
+}
+
+function getProjectInput(event){
+   event.preventDefault();
+    let projectTitle   = document.querySelector('[name=project-title-x]').value;
+    let projectDetails = document.getElementsByClassName("project-detail-div");
+   console.log("inside getProjectInput")
+   // console.log(projectDetails);
+   for (var i = 0; i < projectDetails.length; i++) {
+     var item = projectDetails[i];
+     console.log(projectDetails[i].value)
+   }
 }
 
 

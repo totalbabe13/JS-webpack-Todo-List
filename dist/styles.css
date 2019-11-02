@@ -279,7 +279,7 @@ time, mark, audio, video {
 	grid-column-end: 4;
 	justify-self: center;
 }
-.add-project-detail {
+#add-project-detail {
 	  background: white;
     height: 2em;
     width: 2em;
