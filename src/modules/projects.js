@@ -1,3 +1,5 @@
+console.log("APP_STATE", window.APP_STATE);
+
 const showFormforProject = (() => {
    let addProjectBttnContainer = document.getElementById("add-project");
    let addButton = addProjectBttnContainer.childNodes[1]
